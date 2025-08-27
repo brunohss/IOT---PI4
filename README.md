@@ -76,13 +76,13 @@ docker logs grafana
 
 7. Rodar o simulador (sem hardware)
 
-No seu host:
+    No seu host:
 ```bash
 cd iot-bench-env
 pip install paho-mqtt
 python simulator.py
 ```
-
+    
 Ele publica a cada 2s no tópico lab/bench/bench01/telemetry (JSON com temp, hum, lux, noise_db, co2, voc, pm25, pm10).
 
 Volte ao Node-RED e veja no painel Debug a resposta do Influx (status 204 = gravou com sucesso).
@@ -96,6 +96,7 @@ nodered.org
 Entre em http://localhost:3000
  (admin/admin).
 
+Em dashboard → Grafico por tempo
 Connections → Data sources → Add data source → InfluxDB:
 
 URL: http://influxdb:8086
