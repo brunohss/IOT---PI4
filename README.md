@@ -82,14 +82,12 @@ cd iot-bench-env
 pip install paho-mqtt
 python simulator.py
 ```
-    
-    Ele publica a cada 2s no tópico lab/bench/bench01/telemetry (JSON com temp, hum, lux, noise_db, co2, voc, pm25, pm10).
-    
-    Volte ao Node-RED e veja no painel Debug a resposta do Influx (status 204 = gravou com sucesso).
-    
-    Referências: imagem oficial do Mosquitto e requisitos de config; Node-RED em Docker. 
-    hub.docker.com
-    nodered.org
+
+   Ele publica a cada 2s no tópico lab/bench/bench01/telemetry (JSON com temp, hum, lux, noise_db, co2, voc, pm25, pm10).
+   Volte ao Node-RED e veja no painel Debug a resposta do Influx (status 204 = gravou com sucesso). 
+   Referências: imagem oficial do Mosquitto e requisitos de config; Node-RED em Docker. 
+   hub.docker.com
+   nodered.org
 
 8. Configurar o Grafana
 
