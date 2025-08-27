@@ -34,7 +34,7 @@ cd IOT---PI4
 ```bash
 docker-compose up -d
 ```
-   Apos isso abre o docker desktop clica em container e clica em RUN
+   Apos isso abre o docker desktop clica em container e em icone de start
 
 3. Carregue o firmware no ESP32‑S3 ou utilize o Simulador
 
