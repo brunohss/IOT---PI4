@@ -29,18 +29,21 @@ Ele utiliza o ESP32‑S3 para coleta de dados, MQTT para comunicação em tempo 
 git clone https://github.com/brunohss/IOT---PI4.git
 cd IOT---PI4
 ```
-2.Inicialize os serviços com Docker Compose
+2. Inicialize os serviços com Docker Compose
 ```bash
 docker-compose up -d
 ```
 3. Carregue o firmware no ESP32‑S3 ou utilize o Simulador
-Abra Programa_ESP32_S3_PI4.ino no Arduino IDE ou VSCode PlatformIO e envie para o dispositivo.
 
-Rodar simulador de dados
+  Abra Programa_ESP32_S3_PI4.ino no Arduino IDE ou VSCode PlatformIO e envie para o dispositivo.
+
+  Rodar simulador de dados
 ```bash
 python3 simulator.py
 ```
 
 5. Acesse as interfaces
-Node‑RED: http://localhost:1880
-Grafana (se estiver configurado): http://localhost:3000
+  
+  Node‑RED: http://localhost:1880
+
+  Grafana (se estiver configurado): http://localhost:3000
