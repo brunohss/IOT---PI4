@@ -79,6 +79,7 @@ docker logs grafana
 
     No seu host:
 ```bash
+```bash
 cd iot-bench-env
 pip install paho-mqtt
 python simulator.py
