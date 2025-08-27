@@ -44,6 +44,66 @@ python3 simulator.py
 
 5. Acesse as interfaces
   
-    Node‑RED: http://localhost:1880
+    - MQTT: tcp://localhost:1883 (e websockets em 9001)
 
-    Grafana (se estiver configurado): http://localhost:3000
+    - Node-RED: http://localhost:1880
+
+    - InfluxDB 1.8: http://localhost:8086
+
+    - Grafana: http://localhost:3000    (login admin / admin)
+ 
+
+Dica: veja logs se algo não subir:
+
+```bash
+docker compose ps
+docker logs mosquitto
+docker logs nodered
+docker logs influxdb
+docker logs grafana
+```
+
+6. Importar o fluxo do Node-RED
+
+    Abra http://localhost:1880
+
+   Menu ≡ → Import → Upload e selecione nodered_flow.json.
+
+    Clique Deploy.
+
+    Esse fluxo assina o tópico lab/bench/+/telemetry, monta a linha Influx e faz POST em http://influxdb:8086/write?db=iot. (É exatamente o endpoint oficial do Influx v1.) 
+    docs.influxdata.com
+
+7. Rodar o simulador (sem hardware)
+
+No seu host:
+```bash
+cd iot-bench-env
+pip install paho-mqtt
+python simulator.py
+```
+
+Ele publica a cada 2s no tópico lab/bench/bench01/telemetry (JSON com temp, hum, lux, noise_db, co2, voc, pm25, pm10).
+
+Volte ao Node-RED e veja no painel Debug a resposta do Influx (status 204 = gravou com sucesso).
+
+Referências: imagem oficial do Mosquitto e requisitos de config; Node-RED em Docker. 
+hub.docker.com
+nodered.org
+
+8. Configurar o Grafana
+
+Entre em http://localhost:3000
+ (admin/admin).
+
+Connections → Data sources → Add data source → InfluxDB:
+
+URL: http://influxdb:8086
+
+Query Language: InfluxQL
+
+Database: iot
+
+Sem auth (esta stack está sem usuário/senha no Influx para simplificar o MVP).
+
+Save & test (deve ficar verde).
