@@ -30,7 +30,7 @@ Ele utiliza o ESP32‑S3 para coleta de dados, MQTT para comunicação em tempo 
 git clone https://github.com/brunohss/IOT---PI4.git
 cd IOT---PI4
 ```
-2. Inicialize os serviços com Docker Compose
+2. Inicialize os serviços com Docker Compose na pasta do repositório
 ```bash
 docker-compose up -d
 ```
