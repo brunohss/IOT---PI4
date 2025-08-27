@@ -35,15 +35,15 @@ docker-compose up -d
 ```
 3. Carregue o firmware no ESP32‑S3 ou utilize o Simulador
 
-  Abra Programa_ESP32_S3_PI4.ino no Arduino IDE ou VSCode PlatformIO e envie para o dispositivo.
+    Abra Programa_ESP32_S3_PI4.ino no Arduino IDE ou VSCode PlatformIO e envie para o dispositivo.
 
-  Rodar simulador de dados
+    Rodar simulador de dados
 ```bash
 python3 simulator.py
 ```
 
 5. Acesse as interfaces
   
-  Node‑RED: http://localhost:1880
+    Node‑RED: http://localhost:1880
 
-  Grafana (se estiver configurado): http://localhost:3000
+    Grafana (se estiver configurado): http://localhost:3000
