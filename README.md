@@ -83,28 +83,28 @@ pip install paho-mqtt
 python simulator.py
 ```
     
-Ele publica a cada 2s no tópico lab/bench/bench01/telemetry (JSON com temp, hum, lux, noise_db, co2, voc, pm25, pm10).
-
-Volte ao Node-RED e veja no painel Debug a resposta do Influx (status 204 = gravou com sucesso).
-
-Referências: imagem oficial do Mosquitto e requisitos de config; Node-RED em Docker. 
-hub.docker.com
-nodered.org
+    Ele publica a cada 2s no tópico lab/bench/bench01/telemetry (JSON com temp, hum, lux, noise_db, co2, voc, pm25, pm10).
+    
+    Volte ao Node-RED e veja no painel Debug a resposta do Influx (status 204 = gravou com sucesso).
+    
+    Referências: imagem oficial do Mosquitto e requisitos de config; Node-RED em Docker. 
+    hub.docker.com
+    nodered.org
 
 8. Configurar o Grafana
 
-Entre em http://localhost:3000
- (admin/admin).
-
-Em dashboard → Grafico por tempo
-Connections → Data sources → Add data source → InfluxDB:
-
-URL: http://influxdb:8086
-
-Query Language: InfluxQL
-
-Database: iot
-
-Sem auth (esta stack está sem usuário/senha no Influx para simplificar o MVP).
-
-Save & test (deve ficar verde).
+    Entre em http://localhost:3000
+     (admin/admin).
+    
+    Em dashboard → Grafico por tempo
+    Connections → Data sources → Add data source → InfluxDB:
+    
+    URL: http://influxdb:8086
+    
+    Query Language: InfluxQL
+    
+    Database: iot
+    
+    Sem auth (esta stack está sem usuário/senha no Influx para simplificar o MVP).
+    
+    Save & test (deve ficar verde).
