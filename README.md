@@ -78,8 +78,7 @@ docker logs grafana
 7. Rodar o simulador (sem hardware)
 
     No seu host:
-```bash
-```bash
+```"bash"
 cd iot-bench-env
 pip install paho-mqtt
 python simulator.py
