@@ -11,7 +11,8 @@ Ele utiliza o ESP32‑S3 para coleta de dados, MQTT para comunicação em tempo 
 - **MQTT / Mosquitto** – protocolo leve de mensagens para comunicação entre dispositivos.
 - **InfluxDB** – banco de dados de séries temporais para armazenamento das leituras dos sensores.
 - **Node‑RED** – plataforma de automação e visualização de dados, com fluxos configuráveis.
-- **Docker Compose** – orquestração dos serviços (MQTT, InfluxDB, Node‑RED) em containers.
+- **Grafana** – dashboard para visualização dos dados coletados.
+- **Docker Compose** – orquestração dos serviços (MQTT, InfluxDB, Node‑RED, Grafana) em containers.
 - **Python (simulator.py)** – script opcional para simular dados sensoriais.
 
 ## Estrutura do Repositório
