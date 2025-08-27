@@ -34,6 +34,8 @@ cd IOT---PI4
 ```bash
 docker-compose up -d
 ```
+. Apos isso abre o docker desktop clica em container e clica em RUN
+
 3. Carregue o firmware no ESP32‑S3 ou utilize o Simulador
 
     Abra Programa_ESP32_S3_PI4.ino no Arduino IDE ou VSCode PlatformIO e envie para o dispositivo.
