@@ -40,6 +40,7 @@ docker-compose up -d
 
     Rodar simulador de dados
 ```bash
+pip install paho-mqtt
 python3 simulator.py
 ```
 
