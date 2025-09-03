@@ -1,8 +1,8 @@
-version: "3.8"
+version: "3.9"
 
 services:
   mosquitto:
-    image: eclipse-mosquitto:2
+    image: eclipse-mosquitto:latest
     container_name: mosquitto
     restart: unless-stopped
     ports:
@@ -10,36 +10,49 @@ services:
       - "9001:9001"
     volumes:
       - ./mosquitto.conf:/mosquitto/config/mosquitto.conf:ro
-
+  
   influxdb:
-    image: influxdb:1.8
+    image: influxdb:latest
     container_name: influxdb
     restart: unless-stopped
     ports:
       - "8086:8086"
-    environment:
-      - INFLUXDB_DB=iot
-    volumes:
-      - ./influxdb:/var/lib/influxdb
-      - ./influxdb-init.iql:/docker-entrypoint-initdb.d/init.iql:ro
 
-  nodered:
-    image: nodered/node-red:latest
-    container_name: nodered
+    volumes:
+      - influxdb-data:/var/lib/influxdb2
+      - influxdb-config:/etc/influxdb2
+
+    environment:
+      - DOCKER_INFLUXDB_INIT_MODE=setup
+      - DOCKER_INFLUXDB_INIT_USERNAME=bhassist
+      - DOCKER_INFLUXDB_INIT_PASSWORD=brunohenrique
+      - DOCKER_INFLUXDB_INIT_ORG=bhassist
+      - DOCKER_INFLUXDB_INIT_BUCKET=iot
+      - DOCKER_INFLUXDB_INIT_ADMIN_TOKEN=a_xz75X8LA3j6a7h63641vq2st67RR_zNBJYg93yLKK1jna2mOw2RUVp9hzbzYnFDH2MJIsxc-xFTNNPFfh4vQ==
+  
+  telegraf:
+    image: telegraf
+    container_name: telegraf
     restart: unless-stopped
-    ports:
-      - "1880:1880"
+    volumes:
+      - ./telegraf.conf:/etc/telegraf/telegraf.conf:ro
     depends_on:
       - mosquitto
       - influxdb
-    volumes:
-      - ./node-red:/data
-
+  
   grafana:
-    image: grafana/grafana:latest
+    image: grafana/grafana
     container_name: grafana
     restart: unless-stopped
     ports:
       - "3000:3000"
+    volumes:
+      - ./grafana-provisioning:/etc/grafana/provisioning:ro
+      - grafana-data:/var/lib/grafana
     depends_on:
       - influxdb
+
+volumes:
+  grafana-data:
+  influxdb-data:
+  influxdb-config:

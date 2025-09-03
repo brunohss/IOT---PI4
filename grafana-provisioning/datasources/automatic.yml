@@ -1,0 +1,14 @@
+apiVersion: 1
+
+datasources:
+  - name: InfluxDB_v2_Flux
+    type: influxdb
+    access: proxy
+    url: http://influxdb:8086
+    jsonData:
+      version: Flux
+      organization: bhassist
+      defaultBucket: iot
+      tlsSkipVerify: true
+    secureJsonData:
+      token: a_xz75X8LA3j6a7h63641vq2st67RR_zNBJYg93yLKK1jna2mOw2RUVp9hzbzYnFDH2MJIsxc-xFTNNPFfh4vQ==
