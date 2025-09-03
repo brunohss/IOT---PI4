@@ -10,7 +10,7 @@ Ele utiliza o ESP32‑S3 para coleta de dados, MQTT para comunicação em tempo 
 - **ESP32‑S3** – microcontrolador responsável por ler sensores e enviar dados via MQTT.
 - **MQTT / Mosquitto** – protocolo leve de mensagens para comunicação entre dispositivos.
 - **InfluxDB** – banco de dados de séries temporais para armazenamento das leituras dos sensores.
-- **Node‑RED** – plataforma de automação e visualização de dados, com fluxos configuráveis.
+- **Telegraf** – componente de conexão do InfluxDB.
 - **Grafana** – dashboard para visualização dos dados coletados.
 - **Docker Compose** – orquestração dos serviços (MQTT, InfluxDB, Node‑RED, Grafana) em containers.
 - **Python (simulator.py)** – script opcional para simular dados sensoriais.
@@ -20,7 +20,7 @@ Ele utiliza o ESP32‑S3 para coleta de dados, MQTT para comunicação em tempo 
 - `mosquitto.conf` – configuração do broker MQTT.
 - `influxdb-init.iql` – script para inicialização do banco InfluxDB.
 - `docker-compose.yml` – orquestração dos containers Docker.
-- `nodered_flow.json` – fluxo de automação e visualização no Node‑RED.
+- `telegraf.conf` – configuração de conexão do Telegraf com o Mosquitto e InfluxDB.
 - `simulator.py` – simula dados sensoriais (opcional).
 
 ## Instalação e Execução
@@ -50,9 +50,7 @@ python3 simulator.py
   
     - MQTT: tcp://localhost:1883 (e websockets em 9001)
 
-    - Node-RED: http://localhost:1880
-
-    - InfluxDB 1.8: http://localhost:8086
+    - InfluxDB 1.8: http://localhost:8086 (login bhassist / brunohenrique)
 
     - Grafana: http://localhost:3000    (login admin / admin)
  
@@ -62,27 +60,18 @@ Dica: veja logs se algo não subir:
 ```bash
 docker compose ps
 docker logs mosquitto
-docker logs nodered
+docker logs telegraf
 docker logs influxdb
 docker logs grafana
 ```
 
-6. Importar o fluxo do Node-RED
-
-    Abra http://localhost:1880
-
-   Menu ≡ → Import → Upload e selecione nodered_flow.json.
-
-    Clique Deploy.
-
-    Esse fluxo assina o tópico lab/bench/+/telemetry, monta a linha Influx e faz POST em http://influxdb:8086/write?db=iot. (É exatamente o endpoint oficial do Influx v1.) 
-    docs.influxdata.com
-
-7. Rodar o simulador (sem hardware)
+6. Rodar o simulador (sem hardware)
 
     No seu host:
 ```bash
-cd iot-bench-env
+cd iot---PI4
+python -m venv simulador
+./simulador/Scripts/Activate #.ps1 se no windows
 pip install paho-mqtt
 python simulator.py
 ```
@@ -95,7 +84,7 @@ python simulator.py
    hub.docker.com
    nodered.org
 
-8. Configurar o Grafana
+7. Configurar o Grafana
 
     Entre em http://localhost:3000
      (admin/admin).
