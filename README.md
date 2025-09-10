@@ -1,10 +1,10 @@
 # IOT – PI4
 
-Controle de ambiente de bancada eletrônica com ESP32‑S3, InfluxDB, Node‑RED, MQTT e dashboard.
+Controle de ambiente de bancada eletrônica com ESP32‑S3, InfluxDB, Telegraf, MQTT e dashboard.
 
 ## Sobre
 Este projeto, "IOT – PI4", é um sistema completo para monitoramento e controle de ambiente de bancada eletrônica.  
-Ele utiliza o ESP32‑S3 para coleta de dados, MQTT para comunicação em tempo real, InfluxDB para armazenamento de séries temporais e Node‑RED para visualização e automação.
+Ele utiliza o ESP32‑S3 para coleta de dados, MQTT para comunicação em tempo real, InfluxDB para armazenamento de séries temporais e Telegraf para conexão.
 
 ## Tecnologias
 - **ESP32‑S3** – microcontrolador responsável por ler sensores e enviar dados via MQTT.
@@ -27,7 +27,7 @@ Ele utiliza o ESP32‑S3 para coleta de dados, MQTT para comunicação em tempo 
 
 1. **Clone o repositório**
 ```bash
-git clone https://github.com/brunohss/IOT---PI4.git
+git clone -b Telegraf-Alt https://github.com/brunohss/IOT---PI4.git
 cd IOT---PI4
 ```
 2. Inicialize os serviços com Docker Compose na pasta do repositório
